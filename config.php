@@ -4,8 +4,8 @@
  * 
  * 設成0表示不快取
  */
-//$CONFIG["cache_sec"] = 60 * 10;
-$CONFIG["cache_sec"] = 0;
+$CONFIG["cache_sec"] = 60 * 10;
+//$CONFIG["cache_sec"] = 0;
 
 
-$CONFIG["request_wait_sec"] = 0;
+$CONFIG["request_wait_sec"] = 1;
