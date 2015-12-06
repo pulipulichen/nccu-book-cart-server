@@ -30,6 +30,7 @@ $isbn = $_GET["isbn"];
 //$isbn = "http://jenda.lib.nccu.edu.tw/search~S5*cht?/dWORD%28{u96FB}{u8166}{u7A0B}{u5F0F}%29/dword+{215f55}{215365}{214f35}{213d39}/-3%2C-1%2C0%2CB/frameset&FF=dwordless+picture+book&1%2C1%2C#.VmQzEbiGSko";
 //$isbn = "http://jenda.lib.nccu.edu.tw/search~S5*cht?/dCommunism+--+Social+aspects+--+Soviet+Union+--+Hi/dcommunism+social+aspects+soviet+union+history/-3%2C-1%2C0%2CB/frameset&FF=dcommunism+soviet+union+addresses+essays+lectures&1%2C1%2C#.VmQzmbiGSko";
 //$isbn = "http://jenda.lib.nccu.edu.tw/search~S5*cht?/XWord+2013&SORT=D/XWord+2013&SORT=D&SUBKEY=Word+2013/1%2C42%2C42%2CB/frameset&FF=XWord+2013&SORT=D&1%2C1%2C#.VmQyCLiGSko";
+$isbn = "http://jenda.lib.nccu.edu.tw/search*cht/X?SEARCH=Soviet+communism+and+the+socialist+vision#.VmREzLiGSko";
 //echo $isbn;
 // ---------------------
 // 先取得快取
@@ -130,7 +131,12 @@ else {
     $title = trim($title);
 //echo $title;
     $isbn = $qp->find('.bibInfoLabel:contains("國際標準書號")')->eq(0)->next()->text();
-    $isbn = substr($isbn, 0, strpos($isbn, " : "));
+    if (strpos(" : ", $isbn) !== FALSE) {
+        $isbn = substr($isbn, 0, strpos($isbn, " : "));
+    }
+    else {
+        $isbn = substr($isbn, 0, strpos($isbn, " "));
+    }
     $isbn = trim($isbn);
     $isbn = floatval($isbn);
 
