@@ -11,6 +11,9 @@ function book_list_log($log) {
     getenv('REMOTE_ADDR');
     $table->ip = $ip;
     $table->user_agent = $_SERVER['HTTP_USER_AGENT'];
+    if (isset($_SERVER["HTTP_REFERER"])) {
+        $table->http_referer = $_SERVER["HTTP_REFERER"];
+    }
 
     $table->get = json_encode($_GET, JSON_UNESCAPED_UNICODE);
     $table->post = json_encode($_POST, JSON_UNESCAPED_UNICODE);
